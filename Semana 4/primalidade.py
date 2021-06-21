@@ -6,7 +6,7 @@ primo = True
 
 while divisor < (n / 2) and primo:
 
-    if n % divisor == 0:
+    if (n % 2) == 0 or n % divisor == 0:
         primo = False
     else:
         divisor += +1
