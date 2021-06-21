@@ -15,3 +15,5 @@ else:
         print ("não primo")
     else:
         print ("primo")
+
+#teste de push no pc novo
