@@ -21,5 +21,3 @@ else:
             print("as raízes da equação são",x1,"e",x2)
         else:
             print("as raízes da equação são",x2,"e",x1)
-
-#testando a edição e submissão
