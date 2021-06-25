@@ -6,7 +6,10 @@ def computador_escolhe_jogada(n,m):
         while (n - p) % (m + 1) != 0:
             p -= 1
         else:
-            return p
+            if p == 0:
+                return m
+            else:
+                return p
 
 def usuario_escolhe_jogada(n,m):
     p = int(input("Quantas peças você vai tirar? "))
