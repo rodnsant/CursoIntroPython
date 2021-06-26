@@ -1,14 +1,21 @@
 def computador_escolhe_jogada(n,m):
     if n <= m:
-        return n
+        if n == 1:
+            print("O computador tirou uma peça.")
+            return n
+        else:
+            print("O computador tirou",n,"peças.")
+            return n
     else:
         p = m
         while (n - p) % (m + 1) != 0:
             p -= 1
         else:
             if p == 0:
+                print("O computador tirou",m,"peças.")
                 return m
             else:
+                print("O computador tirou",p,"peças.")
                 return p
 
 def usuario_escolhe_jogada(n,m):
@@ -17,11 +24,46 @@ def usuario_escolhe_jogada(n,m):
         print("\nOops! Jogada inválida! Tente de novo.\n")
         p = int(input("Quantas peças você vai tirar? "))
     else:
-        return p
+        if p == 1:
+            print("Você tirou uma peça.")
+            return p
+        else:
+            print("Você tirou",p,"peças.")
+            return p
+
+def pecas_restantes(n,p):
+    n -= p
+    if n == 0:
+        return n
+    else:
+        if n == 1:
+            print("Agora resta apenas uma peça no tabuleiro.\n")
+            return n
+        else:
+            print("Agora resta apenas",n,"peças no tabuleiro.\n")
+            return n
+
+def usuario_joga (n,m):
+    p = usuario_escolhe_jogada(n,m)
+    n = pecas_restantes(n,p)
+    if n == 0:
+        print("Fim do jogo! Você ganhou!\n")
+        return n
+    else:
+        return n
+
+def computador_joga(n,m):
+    p = computador_escolhe_jogada(n,m)
+    n = pecas_restantes(n,p)
+    if n == 0:
+        print("Fim do jogo! O computador ganhou!\n")
+        return n
+    else: 
+        return n
 
 def partida ():
 
-    n = int(input("Quantas peças? "))
+    n = int(input("\nQuantas peças? "))
     m = int(input("Limite de peças por jogada? "))
 
     while n < m:
@@ -31,66 +73,24 @@ def partida ():
         if n%(m+1) == 0:
             print("\nVocê começa!\n")
             while n > 0:
-                p = usuario_escolhe_jogada(n,m)
-                if p == 1:
-                    print("Você tirou uma peça.")
-                else:
-                    print("Você tirou",p,"peças.")
-                n -= p
+                n = usuario_joga(n,m)
                 if n == 0:
-                    print("Fim do jogo! Você ganhou!\n")
                     return False
                 else:
-                    if n == 1:
-                        print("Agora resta apenas uma peça no tabuleiro.\n")
-                    else:
-                        print("Agora resta apenas",n,"peças no tabuleiro.\n")
-                p = computador_escolhe_jogada(n,m)
-                if p == 1:
-                    print("O computador tirou uma peça.")
-                else:
-                    print("O computador tirou",p,"peças.")
-                n -= p
-                if n == 0:
-                    print("Fim do jogo! O computador ganhou!\n")
-                    return True
-                else:
-                    if n == 1:
-                        print("Agora resta apenas uma peça no tabuleiro.\n")
-                    else:
-                        print("Agora resta apenas",n,"peças no tabuleiro.\n")
+                    n = computador_joga(n,m)
+                    if n == 0:
+                        return True
+
         else:
             print("\nComputador começa!\n")
             while n > 0:
-                p = computador_escolhe_jogada(n,m)
-                if p == 1:
-                    print("O computador tirou uma peça.")
-                else:
-                    print("O computador tirou",p,"peças.")
-                n -= p
+                n = computador_joga(n,m)
                 if n == 0:
-                    print("Fim do jogo! O computador ganhou!\n")
                     return True
                 else:
-                    if n == 1:
-                        print("Agora resta apenas uma peça no tabuleiro.\n")
-                    else:
-                        print("Agora resta apenas",n,"peças no tabuleiro.\n")
-                p = usuario_escolhe_jogada(n,m)
-                if p == 1:
-                    print("Você tirou uma peça.")
-                else:
-                    print("Você tirou",p,"peças.")
-                n -= p
-                if n == 0:
-                    print("Fim do jogo! Você ganhou!\n")
-                    return False
-                else:
-                    if n == 1:
-                        print("Agora resta apenas uma peça no tabuleiro.\n")
-                    else:
-                        print("Agora resta apenas",n,"peças no tabuleiro.\n")
-
+                    n = usuario_joga(n,m)
+                    if n == 0:
+                        return False
 
 def campeonato():
 
@@ -102,7 +102,7 @@ def campeonato():
 
     while rodada < 3:
         rodada += 1
-        print("**** Rodada",(rodada),"****\n")
+        print("**** Rodada",(rodada),"****")
         computadorganhou = partida()
         if computadorganhou == True:
             placarcomputador += 1
@@ -127,6 +127,6 @@ def main():
                 campeonato()
             else:
                 print("\nOpção incorreta.\n")
-                print("Escolha novamente\n")
+                print("Escolha novamente:\n")
         
 main()
