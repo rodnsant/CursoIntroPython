@@ -7,32 +7,32 @@ def computador_escolhe_jogada(n,m):
             print("O computador tirou",n,"peças.")
             return n
     else:
-        p = m
-        while (n - p) % (m + 1) != 0:
-            p -= 1
+        k = m
+        while (n - k) % (m + 1) != 0:
+            k -= 1
         else:
-            if p == 0:
+            if k == 0:
                 print("O computador tirou",m,"peças.")
                 return m
             else:
-                print("O computador tirou",p,"peças.")
-                return p
+                print("O computador tirou",k,"peças.")
+                return k
 
 def usuario_escolhe_jogada(n,m):
-    p = int(input("Quantas peças você vai tirar? "))
-    while p > m or p <= 0 or p > n:
+    k = int(input("Quantas peças você vai tirar? "))
+    while k > m or k <= 0 or k > n:
         print("\nOops! Jogada inválida! Tente de novo.\n")
-        p = int(input("Quantas peças você vai tirar? "))
+        k = int(input("Quantas peças você vai tirar? "))
     else:
-        if p == 1:
+        if k == 1:
             print("Você tirou uma peça.")
-            return p
+            return k
         else:
-            print("Você tirou",p,"peças.")
-            return p
+            print("Você tirou",k,"peças.")
+            return k
 
-def pecas_restantes(n,p):
-    n -= p
+def pecas_restantes(n,k):
+    n -= k
     if n == 0:
         return n
     else:
@@ -44,8 +44,8 @@ def pecas_restantes(n,p):
             return n
 
 def usuario_joga (n,m):
-    p = usuario_escolhe_jogada(n,m)
-    n = pecas_restantes(n,p)
+    k = usuario_escolhe_jogada(n,m)
+    n = pecas_restantes(n,k)
     if n == 0:
         print("Fim do jogo! Você ganhou!\n")
         return n
@@ -53,8 +53,8 @@ def usuario_joga (n,m):
         return n
 
 def computador_joga(n,m):
-    p = computador_escolhe_jogada(n,m)
-    n = pecas_restantes(n,p)
+    k = computador_escolhe_jogada(n,m)
+    n = pecas_restantes(n,k)
     if n == 0:
         print("Fim do jogo! O computador ganhou!\n")
         return n
