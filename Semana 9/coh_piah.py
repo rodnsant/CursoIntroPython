@@ -71,7 +71,16 @@ def n_palavras_diferentes(lista_palavras):
 
 def compara_assinatura(as_a, as_b):
     '''IMPLEMENTAR. Essa funcao recebe duas assinaturas de texto e deve devolver o grau de similaridade nas assinaturas.'''
-    pass
+    
+    assinatura_comparada = []
+
+    zip_obj = zip(as_a,as_b)
+
+    for as_a_i, as_b_i in zip_obj:
+        assinatura_comparada.append(abs(as_a_i - as_b_i))
+
+    return sum(assinatura_comparada) / 6
+
 
 def calcula_assinatura(texto):
     '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
@@ -111,7 +120,7 @@ def calcula_assinatura(texto):
     
     pal_texto = sum(lista_n_caracteres_frase) / len(lista_frases)
 
-    return [wal_texto,ttr_texto,hlr_texto,sal_texto,sac_texto,pal_texto]
+    return [wal_texto, ttr_texto, hlr_texto, sal_texto, sac_texto, pal_texto]
 
 
 def avalia_textos(textos, ass_cp):
