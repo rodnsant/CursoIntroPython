@@ -125,4 +125,13 @@ def calcula_assinatura(texto):
 
 def avalia_textos(textos, ass_cp):
     '''IMPLEMENTAR. Essa funcao recebe uma lista de textos e uma assinatura ass_cp e deve devolver o numero (1 a n) do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
-    pass
+    
+    lista_sab = []
+
+    for texto in textos:
+        ass_texto = calcula_assinatura(texto)
+        lista_sab.append(compara_assinatura(ass_texto,ass_cp))
+
+    aluno_cp = min(lista_sab)
+
+    return lista_sab.index(aluno_cp) + 1
