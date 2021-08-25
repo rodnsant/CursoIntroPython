@@ -135,3 +135,15 @@ def avalia_textos(textos, ass_cp):
     aluno_cp = min(lista_sab)
 
     return lista_sab.index(aluno_cp) + 1
+
+def main():
+
+    ass_b = le_assinatura()
+
+    textos = le_textos()
+
+    texto_copiado = avalia_textos(textos,ass_b)
+
+    print ("O autor do texto", texto_copiado, "está infectado com COH-PIAH")
+
+main()
