@@ -76,6 +76,44 @@ def compara_assinatura(as_a, as_b):
 def calcula_assinatura(texto):
     '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
 
+    lista_sentencas = separa_sentencas(texto)
+
+    lista_frases = []
+
+    lista_n_caracteres_sentenca = []
+
+    for sentenca in lista_sentencas:
+        lista_frases.extend(separa_frases(sentenca))
+        lista_n_caracteres_sentenca.append(len(sentenca))
+
+    lista_palavras = []
+
+    lista_n_caracteres_frase = []
+
+    for frase in lista_frases:
+        lista_palavras.extend(separa_palavras(frase))
+        lista_n_caracteres_frase.append(len(frase))
+
+    lista_n_palavras_texto = []
+
+    for palavra in lista_palavras:
+        lista_n_palavras_texto.append(len(palavra))
+ 
+    wal_texto = sum(lista_n_palavras_texto) / len(lista_n_palavras_texto)
+
+    ttr_texto = n_palavras_diferentes(lista_palavras) / len(lista_palavras)
+
+    hlr_texto = n_palavras_unicas(lista_palavras) / len(lista_palavras)
+
+    sal_texto = sum(lista_n_caracteres_sentenca) / len(lista_sentencas)
+
+    sac_texto = len(lista_frases) / len(lista_sentencas)
+    
+    pal_texto = sum(lista_n_caracteres_frase) / len(lista_frases)
+
+    return [wal_texto,ttr_texto,hlr_texto,sal_texto,sac_texto,pal_texto]
+
+
 def avalia_textos(textos, ass_cp):
     '''IMPLEMENTAR. Essa funcao recebe uma lista de textos e uma assinatura ass_cp e deve devolver o numero (1 a n) do texto com maior probabilidade de ter sido infectado por COH-PIAH.'''
     pass
