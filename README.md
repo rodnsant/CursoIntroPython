@@ -12,4 +12,4 @@ https://www.coursera.org/learn/ciencia-computacao-python-conceitos-2/home/welcom
 
 Exercícios da parte 1 estão nomeados apenas como "semana 1", "semana 2", etc.
 
-Exercícios da parte 2 estão nomeados como "parte-2-semana-1", "parte-2-semana-1", etc.
+Exercícios da parte 2 estão nomeados como "parte-2-semana-1", "parte-2-semana-2", etc.
